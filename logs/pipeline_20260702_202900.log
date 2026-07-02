@@ -1,0 +1,28 @@
+2026-07-02 20:29:01,065 - utils - INFO - ============================================================
+2026-07-02 20:29:01,065 - utils - INFO - STARTING CAT BAKERY ETL PIPELINE
+2026-07-02 20:29:01,065 - utils - INFO - ============================================================
+2026-07-02 20:29:01,066 - utils - INFO - STEP 1: Extracting raw data...
+2026-07-02 20:29:01,066 - utils - INFO - Extracting data from data/raw/customers.csv
+2026-07-02 20:29:01,114 - utils - INFO - Extracted 60000 rows from customers.csv
+2026-07-02 20:29:01,114 - utils - INFO - Extracting data from data/raw/orders.csv
+2026-07-02 20:29:01,212 - utils - INFO - Extracted 110000 rows from orders.csv
+2026-07-02 20:29:01,212 - utils - INFO - Extracting data from data/raw/products.csv
+2026-07-02 20:29:01,214 - utils - INFO - Extracted 200 rows from products.csv
+2026-07-02 20:29:01,214 - utils - INFO - Extracted: 60000 customers, 110000 orders, 200 products
+2026-07-02 20:29:01,214 - utils - INFO - STEP 2: Transforming data...
+2026-07-02 20:29:01,215 - utils - INFO - Starting full transformation pipeline
+2026-07-02 20:29:01,215 - utils - INFO - Starting customers transformation
+2026-07-02 20:29:01,367 - utils - INFO - Standardizing signup dates
+2026-07-02 20:29:13,215 - utils - INFO - Customers transformed: 60000 rows
+2026-07-02 20:29:13,215 - utils - INFO - Starting orders transformation
+2026-07-02 20:29:13,305 - utils - INFO - Standardizing order dates
+2026-07-02 20:29:13,313 - utils - INFO - Orders transformed: 0 rows
+2026-07-02 20:29:13,313 - utils - INFO - Starting products transformation
+2026-07-02 20:29:13,319 - utils - INFO - Products transformed: 200 rows
+2026-07-02 20:29:13,566 - utils - INFO - Saved customers to data/processed/customers_processed.csv
+2026-07-02 20:29:13,568 - utils - INFO - Saved orders to data/processed/orders_processed.csv
+2026-07-02 20:29:13,571 - utils - INFO - Saved products to data/processed/products_processed.csv
+2026-07-02 20:29:13,571 - utils - INFO - Transformation complete
+2026-07-02 20:29:13,572 - utils - INFO - STEP 3: Loading data to database...
+2026-07-02 20:29:13,574 - utils - INFO - Starting full load process
+2026-07-02 20:29:13,635 - utils - INFO - Creating star schema tables

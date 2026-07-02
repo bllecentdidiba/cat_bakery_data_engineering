@@ -1,0 +1,21 @@
+2026-07-02 20:18:55,687 - utils - INFO - ============================================================
+2026-07-02 20:18:55,688 - utils - INFO - STARTING CAT BAKERY ETL PIPELINE
+2026-07-02 20:18:55,688 - utils - INFO - ============================================================
+2026-07-02 20:18:55,688 - utils - INFO - STEP 1: Extracting raw data...
+2026-07-02 20:18:55,688 - utils - INFO - Extracting data from data/raw/customers.csv
+2026-07-02 20:18:55,765 - utils - INFO - Extracted 60000 rows from customers.csv
+2026-07-02 20:18:55,765 - utils - INFO - Extracting data from data/raw/orders.csv
+2026-07-02 20:18:55,863 - utils - INFO - Extracted 110000 rows from orders.csv
+2026-07-02 20:18:55,863 - utils - INFO - Extracting data from data/raw/products.csv
+2026-07-02 20:18:55,874 - utils - INFO - Extracted 200 rows from products.csv
+2026-07-02 20:18:55,874 - utils - INFO - Extracted: 60000 customers, 110000 orders, 200 products
+2026-07-02 20:18:55,874 - utils - INFO - STEP 2: Transforming data...
+2026-07-02 20:18:55,874 - utils - INFO - Starting full transformation pipeline
+2026-07-02 20:18:55,874 - utils - INFO - Starting customers transformation
+2026-07-02 20:18:56,045 - utils - INFO - Standardizing signup dates
+2026-07-02 20:19:07,577 - utils - INFO - Customers transformed: 60000 rows
+2026-07-02 20:19:07,577 - utils - INFO - Starting orders transformation
+2026-07-02 20:19:07,666 - utils - INFO - Standardizing order dates
+2026-07-02 20:19:07,671 - utils - INFO - Orders transformed: 0 rows
+2026-07-02 20:19:07,671 - utils - INFO - Starting products transformation
+2026-07-02 20:19:07,690 - utils - INFO - Products transformed: 200 rows

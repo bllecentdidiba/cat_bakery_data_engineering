@@ -1,0 +1,28 @@
+paths:
+  raw_data: "data/raw/"
+  processed_data: "data/processed/"
+  logs: "logs/"
+
+database:
+  host: "localhost"
+  port: 5432
+  database: "cat_bakery"
+  user: "postgres"
+  password: "postgres123"
+
+cleaning:
+  date_formats:
+    - "%m/%d/%Y"
+    - "%Y-%m-%d"
+    - "%A, %B %d, %Y"
+  missing_threshold: 0.5
+  imputation:
+    city: "Unknown"
+    customer_tier: "Bronze"
+    preferred_contact_method: "Email"
+    gluten_free: "N"
+    order_rating: 3.0
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

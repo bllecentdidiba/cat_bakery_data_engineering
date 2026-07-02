@@ -1,0 +1,44 @@
+2026-07-02 22:26:03,501 - utils - INFO - ============================================================
+2026-07-02 22:26:03,501 - utils - INFO - STARTING CAT BAKERY ETL PIPELINE
+2026-07-02 22:26:03,501 - utils - INFO - ============================================================
+2026-07-02 22:26:03,502 - utils - INFO - STEP 1: Extracting raw data...
+2026-07-02 22:26:03,502 - utils - INFO - Extracting data from data/raw/customers.csv
+2026-07-02 22:26:03,584 - utils - INFO - Extracted 60000 rows from customers.csv
+2026-07-02 22:26:03,584 - utils - INFO - Extracting data from data/raw/orders.csv
+2026-07-02 22:26:03,748 - utils - INFO - Extracted 110000 rows from orders.csv
+2026-07-02 22:26:03,748 - utils - INFO - Extracting data from data/raw/products.csv
+2026-07-02 22:26:03,751 - utils - INFO - Extracted 200 rows from products.csv
+2026-07-02 22:26:03,751 - utils - INFO - Extracted: 60000 customers, 110000 orders, 200 products
+2026-07-02 22:26:03,751 - utils - INFO - STEP 2: Transforming data...
+2026-07-02 22:26:03,752 - utils - INFO - Starting full transformation pipeline
+2026-07-02 22:26:03,752 - utils - INFO - Starting customers transformation
+2026-07-02 22:26:03,943 - utils - INFO - Standardizing signup dates
+2026-07-02 22:26:38,305 - utils - INFO - Customers transformed: 60000 rows
+2026-07-02 22:26:38,306 - utils - INFO - Starting products transformation
+2026-07-02 22:26:38,328 - utils - INFO - Products transformed: 200 rows
+2026-07-02 22:26:38,329 - utils - INFO - Starting orders transformation
+2026-07-02 22:26:38,436 - utils - INFO - Standardizing order dates...
+2026-07-02 22:27:56,608 - utils - INFO - Orders transformed: 109981 rows
+2026-07-02 22:27:57,372 - utils - INFO - Saved customers to data/processed/customers_processed.csv
+2026-07-02 22:27:59,549 - utils - INFO - Saved orders to data/processed/orders_processed.csv
+2026-07-02 22:27:59,559 - utils - INFO - Saved products to data/processed/products_processed.csv
+2026-07-02 22:27:59,560 - utils - INFO - Transformation complete
+2026-07-02 22:27:59,561 - utils - INFO - STEP 3: Loading data to database...
+2026-07-02 22:27:59,562 - utils - INFO - Starting full load process
+2026-07-02 22:27:59,762 - utils - INFO - Creating star schema tables
+2026-07-02 22:27:59,963 - utils - INFO - Star schema tables created
+2026-07-02 22:27:59,965 - utils - INFO - Loading date dimension
+2026-07-02 22:28:00,783 - utils - INFO - Loaded 2557 dates
+2026-07-02 22:28:00,784 - utils - INFO - Loading dimension tables
+2026-07-02 22:28:08,833 - utils - INFO - Loaded 60000 customers
+2026-07-02 22:28:08,897 - utils - INFO - Loaded 200 products
+2026-07-02 22:28:08,898 - utils - INFO - Loading fact orders
+2026-07-02 22:28:30,507 - utils - INFO - Loaded 113845 orders
+2026-07-02 22:28:30,514 - utils - INFO - Load complete
+2026-07-02 22:28:30,514 - utils - INFO - Load complete
+2026-07-02 22:28:30,515 - utils - INFO - ============================================================
+2026-07-02 22:28:30,516 - utils - INFO - PIPELINE COMPLETED SUCCESSFULLY!
+2026-07-02 22:28:30,518 - utils - INFO - ============================================================
+2026-07-02 22:28:30,519 - utils - INFO - 
+To view dashboard, run:
+2026-07-02 22:28:30,519 - utils - INFO - streamlit run scripts/05_dashboard.py
