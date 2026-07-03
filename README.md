@@ -20,54 +20,26 @@ This project is a **complete data engineering platform** built for a cat bakery 
 ---
 
 ## 🏗️ Architecture
+## 🏗️ Architecture
 
-+------------------+ +------------------+ +------------------+
-| RAW CSV FILES | | PYTHON ETL | | POSTGRESQL |
-+------------------+ +------------------+ +------------------+
-| Customers | --> | 1. Extract | --> | dim_customer |
-| (60,000) | | 2. Transform | | dim_product |
-| Orders | --> | - Dates | --> | dim_date |
-| (110,000) | | - Missing | | fact_orders |
-| Products | --> | - Validate | | |
-| (200) | | 3. Load | | |
-+------------------+ +------------------+ +------------------+
-|
-v
-+------------------+
-| STREAMLIT |
-| DASHBOARD |
-+------------------+
+| Stage | Tools | Output |
+|-------|-------|--------|
+| **Extract** | Python (Pandas) | Raw data from CSV files |
+| **Transform** | Python (Pandas, NumPy) | Cleaned, validated data |
+| **Load** | Python (SQLAlchemy) | PostgreSQL star schema |
+| **Visualize** | Streamlit + Plotly | Interactive dashboard |
 
 ---
 
 ## 🗄️ Star Schema Design
+## 🗄️ Star Schema Design
 
-┌─────────────────┐ ┌──────────────────┐ ┌─────────────────┐
-│ dim_customer │ │ fact_orders │ │ dim_product │
-├─────────────────┤ ├──────────────────┤ ├─────────────────┤
-│ customer_id (PK)│────►│ customer_id (FK) │ │ product_id (PK) │◄────┐
-│ city │ │ product_id (FK) │─────┤ product_name │ │
-│ signup_date │ │ order_id (PK) │ │ gluten_free │ │
-│ customer_tier │ │ order_date │ │ cost │ │
-│ signup_year │ │ quantity │ │ sales_price │ │
-│ signup_month │ │ order_rating │ │ profit_margin │ │
-└─────────────────┘ │ total_amount │ └─────────────────┘ │
-│ order_year │ │
-│ order_month │ │
-└──────────────────┘ │
-│ │
-▼ │
-┌─────────────┐ │
-│ dim_date │ │
-├─────────────┤ │
-│ date_id (PK)│ │
-│ year │ │
-│ quarter │ │
-│ month_name │ │
-│ day_name │ │
-│ is_weekend │ │
-└─────────────┘ │
-
+| Table | Columns | Description |
+|-------|---------|-------------|
+| **dim_customer** | customer_id (PK), city, signup_date, customer_tier, signup_year, signup_month | Customer information and demographics |
+| **dim_product** | product_id (PK), product_name, gluten_free, cost, sales_price, profit_margin | Product catalog and pricing |
+| **dim_date** | date_id (PK), year, quarter, month, month_name, day, day_name, is_weekend | Date dimension for time-based analysis |
+| **fact_orders** | order_id (PK), customer_id (FK), product_id (FK), order_date (FK), quantity, order_rating, total_amount, order_year, order_month | Transaction facts linked to all dimensions |
 
 ---
 
