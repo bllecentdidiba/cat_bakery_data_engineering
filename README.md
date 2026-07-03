@@ -95,7 +95,9 @@ This project is a **complete data engineering platform** built for a cat bakery 
    cd cat_bakery_data_engineering
    
 ##Visualisations
+
 ##📊Visual 1: Executive Dashboard
+
 <img width="1291" height="503" alt="Executive_Dashboard" src="https://github.com/user-attachments/assets/d0f3ca82-abd4-4ee4-b556-bce1bc8b5218" />
 
 ##📊Visual 2: Customer tier analysis
