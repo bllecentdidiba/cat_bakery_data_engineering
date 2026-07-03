@@ -1,4 +1,12 @@
-**# 🐱 Cat Bakery Data Engineering Platform**
+
+---
+
+## 📝 **HERE'S YOUR COMPLETE FIXED README:**
+
+I'll give you the **full corrected version** — copy this exactly:
+
+```markdown
+# 🐱 Cat Bakery Data Engineering Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
@@ -9,7 +17,7 @@
 
 ---
 
-**## 📊 Overview**
+## 📊 Overview
 
 This project is a **complete data engineering platform** built for a cat bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema and visualizes business insights through an interactive dashboard.
 
@@ -19,7 +27,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-**## 🏗️ Architecture**
+## 🏗️ Architecture
 
 | Stage | Tools | Output |
 |-------|-------|--------|
@@ -30,7 +38,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-**## 🗄️ Star Schema Design**
+## 🗄️ Star Schema Design
 
 | Table | Columns | Description |
 |-------|---------|-------------|
@@ -41,7 +49,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-**## 🛠️ Tech Stack**
+## 🛠️ Tech Stack
 
 | Layer | Technologies |
 |-------|--------------|
@@ -54,7 +62,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-**## 📈 Results & Metrics**
+## 📈 Results & Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -85,84 +93,11 @@ This project is a **complete data engineering platform** built for a cat bakery 
 ### Prerequisites
 - Python 3.10+
 - PostgreSQL 15+
-- Docker
+- Docker (optional)
 
 ### Installation
 
 1. **Clone the repository**
+   ```bash
    git clone https://github.com/bllecentdidiba/cat_bakery_data_engineering.git
    cd cat_bakery_data_engineering
-2. **Install dependencies**
-   pip install -r requirements.txt
-3. Configure PostgreSQL
-
-      -Create a database named cat_bakery
-
-      -Update config/config.yaml with your credentials
-
-4. Run the ETL Pipeline
-5. 
-   py scripts/run_pipeline.py
-   
-7. Launch the Dashboard
-   
-   py -m streamlit run scripts/05_dashboard.py
-   
-   Open http://localhost:8501 in your browser
-
-**📊 Dashboard Preview:**
-The dashboard provides real-time insights into:
-
-📈 Monthly Revenue and Orders Trends
-
-🏆 Top 10 Products by Revenue
-
-👥 Customer Tier Analysis (Bronze/Silver/Gold)
-
-⭐ Order Rating Distribution
-
-📊 Raw Data Preview
-
-
-
-**💡 Business Insights**
-Insight                            	Finding
-Average Order Value	                $5.50 per order
-Top Customer Tier	                  Gold customers generate 40% of revenue
-Best-Selling Product	              Almond Croissant (gluten-free)
-Seasonal Trend	                    December sales spike 40%
-Revenue Growth    	                Consistent year-over-year increase
-
-
-pytest tests/ -v
-
-**🔮 Future Improvements**
-
-Add CI/CD pipeline (GitHub Actions)
-
-Deploy to cloud (AWS/GCP)
-
-Add more data sources
-
-Implement real-time streaming
-
-Add machine learning predictions
-
-**👤 Author**
-**Thanyani Bllecent Didiba**
-**BCom Statistics and Data Science** | University of Pretoria
-
-GitHub: @bllecentdidiba
-
-LinkedIn: Thanyani Didiba
-
-Email: bllecentdidiba@gmail.com
-
-**📄 License**
-This project is licensed under the MIT License — see the LICENSE file for details.
-
-
-**🙏 Acknowledgements**
-University of Pretoria — BCom Statistics and Data Science
-
-Open-source libraries: Pandas, SQLAlchemy, Streamlit, Plotly
