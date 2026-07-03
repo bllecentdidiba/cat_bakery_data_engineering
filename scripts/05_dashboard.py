@@ -24,7 +24,7 @@ def get_connection():
 
 engine = get_connection()
 
-# Load data functions
+# Loaded data functions
 @st.cache_data(ttl=300)
 def load_data():
     with engine.connect() as conn:
@@ -99,7 +99,8 @@ try:
     
     st.markdown("---")
     
-    # Charts - Row 1
+    # Charts 
+    #Row 1
     col1, col2 = st.columns(2)
     
     with col1:
