@@ -92,13 +92,11 @@ This project is a complete data engineering platform built for a cat bakery busi
 1. **Clone the repository**
    ```bash
    git clone https://github.com/bllecentdidiba/cat_bakery_data_engineering.git
-   cd cat_bakery_data_engineering
    ```
 
 2. **Set up a virtual environment**
    ```bash
    python -m venv venv
-   venv\Scripts\activate
    ```
 
 3. **Install dependencies**
@@ -108,12 +106,12 @@ This project is a complete data engineering platform built for a cat bakery busi
 
 4. **Run the ETL pipeline**
    ```bash
-   py run_pipeline.py 
+   py scripts/run_pipeline.py
    ```
 
 5. **Launch the dashboard**
    ```bash
-   py -m streamlit run scripts/05_dashboard.py
+  py -m streamlit run scripts/05_dashboard.py
    ```
 ### Visualizations
 
