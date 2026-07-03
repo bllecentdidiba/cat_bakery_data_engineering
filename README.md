@@ -1,4 +1,4 @@
-# 🐱 Cat Bakery Data Engineering Platform
+**# 🐱 Cat Bakery Data Engineering Platform**
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
@@ -9,7 +9,7 @@
 
 ---
 
-## 📊 Overview
+**## 📊 Overview**
 
 This project is a **complete data engineering platform** built for a cat bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema and visualizes business insights through an interactive dashboard.
 
@@ -19,7 +19,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-## 🏗️ Architecture
+**## 🏗️ Architecture**
 
 | Stage | Tools | Output |
 |-------|-------|--------|
@@ -41,7 +41,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-## 🛠️ Tech Stack
+**## 🛠️ Tech Stack**
 
 | Layer | Technologies |
 |-------|--------------|
@@ -54,7 +54,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-## 📈 Results & Metrics
+**## 📈 Results & Metrics**
 
 | Metric | Value |
 |--------|-------|
