@@ -111,7 +111,7 @@ This project is a complete data engineering platform built for a cat bakery busi
 
 5. **Launch the dashboard**
    ```bash
-  py -m streamlit run scripts/05_dashboard.py
+   py -m streamlit run scripts/05_dashboard.py
    ```
 ### Visualizations
 
