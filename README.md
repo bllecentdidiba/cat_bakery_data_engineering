@@ -96,7 +96,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
    
 ##Visualisations
 ##📊Visual1: Executive Dashboard
-![Executive Dashboard](Screenshot 2026-07-03 134912.png)
+![Executive Dashboard](Screenshot 2026-07-03 135056.png)
 
 
 
