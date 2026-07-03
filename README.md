@@ -20,7 +20,6 @@ This project is a **complete data engineering platform** built for a cat bakery 
 ---
 
 ## 🏗️ Architecture
-## 🏗️ Architecture
 
 | Stage | Tools | Output |
 |-------|-------|--------|
@@ -98,17 +97,21 @@ This project is a **complete data engineering platform** built for a cat bakery 
    pip install -r requirements.txt
 3. Configure PostgreSQL
 
-  -Create a database named cat_bakery
+      -Create a database named cat_bakery
 
-  -Update config/config.yaml with your credentials
+      -Update config/config.yaml with your credentials
 
 4. Run the ETL Pipeline
+5. 
    py scripts/run_pipeline.py
-5. Launch the Dashboard
+   
+7. Launch the Dashboard
+   
    py -m streamlit run scripts/05_dashboard.py
+   
    Open http://localhost:8501 in your browser
 
-📊 Dashboard Preview
+**📊 Dashboard Preview:**
 The dashboard provides real-time insights into:
 
 📈 Monthly Revenue and Orders Trends
@@ -123,7 +126,7 @@ The dashboard provides real-time insights into:
 
 
 
-💡 Business Insights
+**💡 Business Insights**
 Insight                            	Finding
 Average Order Value	                $5.50 per order
 Top Customer Tier	                  Gold customers generate 40% of revenue
@@ -134,7 +137,8 @@ Revenue Growth    	                Consistent year-over-year increase
 
 pytest tests/ -v
 
-🔮 Future Improvements
+**🔮 Future Improvements**
+
 Add CI/CD pipeline (GitHub Actions)
 
 Deploy to cloud (AWS/GCP)
@@ -145,9 +149,9 @@ Implement real-time streaming
 
 Add machine learning predictions
 
-👤 Author
-Thanyani Bllecent Didiba
-BCom Statistics and Data Science | University of Pretoria
+**👤 Author**
+**Thanyani Bllecent Didiba**
+**BCom Statistics and Data Science** | University of Pretoria
 
 GitHub: @bllecentdidiba
 
@@ -155,11 +159,11 @@ LinkedIn: Thanyani Didiba
 
 Email: bllecentdidiba@gmail.com
 
-📄 License
+**📄 License**
 This project is licensed under the MIT License — see the LICENSE file for details.
 
 
-🙏 Acknowledgements
+**🙏 Acknowledgements**
 University of Pretoria — BCom Statistics and Data Science
 
 Open-source libraries: Pandas, SQLAlchemy, Streamlit, Plotly
