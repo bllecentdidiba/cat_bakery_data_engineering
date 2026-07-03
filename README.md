@@ -30,8 +30,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 
 ---
 
-## 🗄️ Star Schema Design
-## 🗄️ Star Schema Design
+**## 🗄️ Star Schema Design**
 
 | Table | Columns | Description |
 |-------|---------|-------------|
