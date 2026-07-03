@@ -93,3 +93,11 @@ This project is a **complete data engineering platform** built for a cat bakery 
    ```bash
    git clone https://github.com/bllecentdidiba/cat_bakery_data_engineering.git
    cd cat_bakery_data_engineering
+   
+##Visualisations
+##📊Visual1: Executive Dashboard
+![Executive Dashboard](Screenshot 2026-07-03 134912.png)
+
+
+
+
