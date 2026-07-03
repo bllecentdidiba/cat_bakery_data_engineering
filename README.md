@@ -1,4 +1,4 @@
-# 🐱 Cat Bakery Data Engineering Platform
+# 🐱 Bakery Sales Data Engineering Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
@@ -11,7 +11,7 @@
 
 ## 📊 Overview
 
-This project is a complete data engineering platform built for a cat bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema and visualizes business insights through an interactive dashboard.
+This project is a complete data engineering platform built for a bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema and visualizes business insights through an interactive dashboard.
 
 **The Problem:** The bakery had messy data spread across multiple CSV files with inconsistent date formats, thousands of missing values and no proper way to analyze performance.
 
