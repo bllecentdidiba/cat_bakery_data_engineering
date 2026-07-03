@@ -5,17 +5,17 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **End-to-end ETL pipeline processing 110,000+ bakery transactions — from messy CSV files to an interactive dashboard.**
+> **End-to-end ETL pipeline processing 110,000+ bakery transactions - from messy CSV files to an interactive dashboard.**
 
 ---
 
 ## 📊 Overview
 
-This project is a **complete data engineering platform** built for a cat bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema, and visualizes business insights through an interactive dashboard.
+This project is a **complete data engineering platform** built for a cat bakery business. It extracts raw data from multiple CSV files, cleans and transforms inconsistent data, loads it into a PostgreSQL star schema and visualizes business insights through an interactive dashboard.
 
-**The Problem:** The bakery had messy data spread across multiple CSV files with inconsistent date formats (3 different formats!), thousands of missing values, and no centralized way to analyze performance.
+**The Problem:** The bakery had messy data spread across multiple CSV files with inconsistent date formats, thousands of missing values and no single way to analyze performance.
 
-**The Solution:** An automated ETL pipeline that handles data cleaning, validation, and loading — delivering clean, analysis-ready data in minutes instead of hours.
+**The Solution:** An automated ETL pipeline that handles data cleaning, validation and loading; delivering clean, analysis-ready data in minutes instead of hours.
 
 ---
 
@@ -123,7 +123,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 ### Prerequisites
 - Python 3.10+
 - PostgreSQL 15+
-- Docker (optional)
+- Docker
 
 ### Installation
 
