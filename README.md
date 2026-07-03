@@ -85,7 +85,7 @@ This project is a **complete data engineering platform** built for a cat bakery 
 ### Prerequisites
 - Python 3.10+
 - PostgreSQL 15+
-- Docker (optional)
+- Docker
 
 ### Installation
 
