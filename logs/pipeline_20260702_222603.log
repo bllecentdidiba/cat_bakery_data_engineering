@@ -1,6 +1,4 @@
-2026-07-02 22:26:03,501 - utils - INFO - ============================================================
 2026-07-02 22:26:03,501 - utils - INFO - STARTING CAT BAKERY ETL PIPELINE
-2026-07-02 22:26:03,501 - utils - INFO - ============================================================
 2026-07-02 22:26:03,502 - utils - INFO - STEP 1: Extracting raw data...
 2026-07-02 22:26:03,502 - utils - INFO - Extracting data from data/raw/customers.csv
 2026-07-02 22:26:03,584 - utils - INFO - Extracted 60000 rows from customers.csv
@@ -36,9 +34,7 @@
 2026-07-02 22:28:30,507 - utils - INFO - Loaded 113845 orders
 2026-07-02 22:28:30,514 - utils - INFO - Load complete
 2026-07-02 22:28:30,514 - utils - INFO - Load complete
-2026-07-02 22:28:30,515 - utils - INFO - ============================================================
-2026-07-02 22:28:30,516 - utils - INFO - PIPELINE COMPLETED SUCCESSFULLY!
-2026-07-02 22:28:30,518 - utils - INFO - ============================================================
+2026-07-02 22:28:30,516 - utils - INFO - PIPELINE COMPLETED!
 2026-07-02 22:28:30,519 - utils - INFO - 
 To view dashboard, run:
 2026-07-02 22:28:30,519 - utils - INFO - streamlit run scripts/05_dashboard.py
