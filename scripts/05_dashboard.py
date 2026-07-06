@@ -173,20 +173,6 @@ try:
         )
         st.plotly_chart(fig, use_container_width=True)
     
-    with col2:
-        st.subheader("⭐ Order Rating Distribution")
-        rating_dist = orders['order_rating'].value_counts().sort_index()
-        fig = px.bar(
-            x=rating_dist.index,
-            y=rating_dist.values,
-            labels={'x': 'Rating', 'y': 'Count'},
-            color=rating_dist.index,
-            color_continuous_scale='RdBu',
-            text=rating_dist.values
-        )
-        fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
-    
     # Raw data section
     st.markdown("---")
     st.subheader("Raw Data Preview")
