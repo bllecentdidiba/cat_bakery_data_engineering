@@ -7,7 +7,7 @@ from utils import load_config
 
 # Page config
 st.set_page_config(
-    page_title="Cat Bakery Analytics",
+    page_title="Bakery Sales Analytics",
     page_icon="🐱",
     layout="wide"
 )
