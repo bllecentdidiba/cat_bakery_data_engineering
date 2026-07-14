@@ -15,7 +15,7 @@ This project is a complete data engineering platform built for a bakery business
 
 **The Problem:** The bakery had messy data spread across multiple CSV files with inconsistent date formats, thousands of missing values and no proper way to analyze performance.
 
-**The Solution:** An automated ETL pipeline that handles data cleaning, validation and loading — delivering clean, analysis-ready data in minutes instead of hours.
+**The Solution:** An automated ETL pipeline that handles data cleaning, validation and loading. Delivering clean, analysis-ready data in minutes instead of hours.
 
 ---
 
