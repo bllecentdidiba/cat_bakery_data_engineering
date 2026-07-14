@@ -126,9 +126,9 @@ try:
         with col2:
             st.metric("Total Orders", f"{metrics['total_orders'].iloc[0]:,}")
         with col3:
-            st.metric("Total Revenue", f"${metrics['total_revenue'].iloc[0]:,.2f}")
+            st.metric("Total Revenue", f"R{metrics['total_revenue'].iloc[0]:,.2f}")
         with col4:
-            st.metric("Avg Order Value", f"${metrics['avg_order_value'].iloc[0]:.2f}")
+            st.metric("Avg Order Value", f"R{metrics['avg_order_value'].iloc[0]:.2f}")
         with col5:
             st.metric("Avg Rating", f"{metrics['avg_rating'].iloc[0]:.2f} ⭐")
         
@@ -172,7 +172,7 @@ try:
                 orientation='h',
                 color='revenue',
                 color_continuous_scale='Viridis',
-                text=top_products['revenue'].apply(lambda x: f'${x:,.0f}')
+                text=top_products['revenue'].apply(lambda x: f'R{x:,.0f}')
             )
             fig.update_layout(height=400, yaxis_title='', xaxis_title='Revenue (R)')
             st.plotly_chart(fig, use_container_width=True)
@@ -202,7 +202,7 @@ try:
             ))
             fig.update_layout(
                 yaxis=dict(title='Customers'),
-                yaxis2=dict(title='Revenue ($)', overlaying='y', side='right'),
+                yaxis2=dict(title='Revenue (R)', overlaying='y', side='right'),
                 height=400
             )
             st.plotly_chart(fig, use_container_width=True)
