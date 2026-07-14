@@ -19,7 +19,7 @@ This project is a complete data engineering platform built for a bakery business
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 | Stage | Tools | Output |
 |-------|-------|--------|
@@ -41,7 +41,7 @@ This project is a complete data engineering platform built for a bakery business
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |-------|--------------|
@@ -67,7 +67,7 @@ This project is a complete data engineering platform built for a bakery business
 
 ---
 
-## 🔧 Key Features
+## Key Features
 
 - ✅ **ETL Pipeline** — Automated extract, transform, load process
 - ✅ **Data Cleaning** — Handles 3+ date formats, imputes missing values (10,000+)
@@ -93,20 +93,20 @@ This project is a complete data engineering platform built for a bakery business
    git clone https://github.com/bllecentdidiba/cat_bakery_data_engineering.git
    cd cat_bakery_data_engineering
    
-2. **Set up vortal environment**
+2. **Set up virtual environment**
    ```bash
    python -m venv venv
    source venv\Scripts\activate
 
-4. **Install dependencies**
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
 
-5. **Configure the database**
+4. **Configure the database**
 
-   Edit config/config.yaml with your PostgreSQL credentials
+   -Edit config/config.yaml with your PostgreSQL credentials
 
-   Default: postgres / postgres123 on localhost:5432
+   -Default: postgres / postgres123 on localhost:5432
 
 5. **Run the ETL pipeline**
    ```bash
@@ -118,7 +118,46 @@ This project is a complete data engineering platform built for a bakery business
 7. **Docker Setup**
    ```bash
    docker-compose up -d
-
-
+8. Start the scheduler 
+   ```bash
+   py scripts/email_report.py
+   send the email immediately: py scripts/email_report.py --send-now
+9. Email config
+    under config/yaml.py
    
+  email:
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  sender_email: "your_email@gmail.com"
+  sender_password: "your_app_password"
+  recipient_email: "recipient@email.com"
+  subject: "Bakery Daily Sales Report"
 
+10. **Testing**
+    ```# Run all tests
+    pytest tests/ -v
+    pytest tests/test_transforms.py -v
+    pytest --cov=scripts tests/
+
+
+## Main Dashboard 📊 ##
+<img width="1258" height="555" alt="image" src="https://github.com/user-attachments/assets/8b4ba627-c806-457d-ba85-bf30a5b81bc6" />
+
+## Tier Analysis Dashboard ##
+
+<img width="935" height="425" alt="image" src="https://github.com/user-attachments/assets/223e646d-5195-4257-8054-830314e93509" />
+
+## 📧 Automated Email Reports
+
+**The pipeline includes an automated email reporting system:**
+
+Daily Reports: Sends HTML-formatted reports at 9:00 AM
+
+Summary Metrics: Revenue, orders, customers, ratings
+
+Trend Analysis: Monthly revenue trends (last 6 months)
+
+Customer Insights: Tier analysis with revenue breakdown
+
+👨‍🎓 About the Author
+BCom Statistics and Data Science student at the University of Pretoria.
