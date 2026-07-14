@@ -6,6 +6,63 @@ import os
 config = load_config()
 logger = setup_logging(config)
 
+def clean_product_names_for_db(df):
+    """Clean product names based on actual products.csv data"""
+    logger.info("Cleaning product names for database...")
+    
+    # Show original unique products
+    original_products = df['product_name'].unique().tolist()
+    logger.info(f"📊 Original unique products: {len(original_products)}")
+    logger.info(f"📊 Original products: {original_products}")
+    
+    product_name_mapping = {
+        # Almond Croissant variations
+        'Almond Croissant GF': 'Almond Croissant GF',
+        'Almon Croissant GF': 'Almond Croissant GF',
+        
+        # Ciabatta variations (typos)
+        'Ciabatta': 'Ciabatta',
+        'Ciabater': 'Ciabatta',
+        'Ciabattar': 'Ciabatta',
+        
+        # Sourdough variations (typos)
+        'Sourcedough Loaf': 'Sourdough Loaf',
+        'Sourcedogh Loaf': 'Sourdough Loaf',
+        'ASourcedough Loaf': 'Sourdough Loaf',
+        
+        # Rye Bread variations
+        'Rye Bread': 'Rye Bread',
+        'RRye Bread': 'Rye Bread',
+        
+        # Blueberry Muffin
+        'Blueberry Muffin GF': 'Blueberry Muffin GF',
+        
+        # Red Velvet Cupcake
+        'Red Velvet Cupcake': 'Red Velvet Cupcake',
+        
+        # Empty product names
+        '': 'Unknown Product',
+        'NULL': 'Unknown Product',
+        None: 'Unknown Product',
+    }
+    
+    # Clean and standardize product names
+    df['product_name_clean'] = df['product_name'].fillna('').str.strip()
+    
+    # Apply mapping
+    df['product_name_clean'] = df['product_name_clean'].replace(product_name_mapping)
+    
+    # Log the cleaned names
+    unique_names = df['product_name_clean'].unique().tolist()
+    logger.info(f"✅ Cleaned product names: {len(unique_names)} unique products")
+    logger.info(f"📊 Products: {unique_names}")
+    
+    # Replace the product_name column
+    df['product_name'] = df['product_name_clean']
+    df = df.drop('product_name_clean', axis=1)
+    
+    return df
+
 def create_db_connection():
     """Create database connection"""
     db_config = config['database']
@@ -17,6 +74,11 @@ def create_star_schema(engine):
     logger.info("Creating star schema tables")
     
     sql_commands = [
+        """DROP TABLE IF EXISTS fact_orders CASCADE""",
+        """DROP TABLE IF EXISTS dim_customer CASCADE""",
+        """DROP TABLE IF EXISTS dim_product CASCADE""",
+        """DROP TABLE IF EXISTS dim_date CASCADE""",
+        
         """
         CREATE TABLE IF NOT EXISTS dim_customer (
             customer_id INTEGER PRIMARY KEY,
@@ -85,9 +147,14 @@ def create_star_schema(engine):
     
     with engine.connect() as conn:
         for cmd in sql_commands:
-            conn.execute(text(cmd))
-            conn.commit()
-    logger.info("Star schema tables created")
+            try:
+                conn.execute(text(cmd))
+                conn.commit()
+            except Exception as e:
+                logger.error(f"Error executing: {cmd[:50]}... Error: {str(e)}")
+                raise
+    
+    logger.info("✅ Star schema tables created")
 
 def load_dim_date(engine):
     """Generate and load date dimension"""
@@ -110,68 +177,79 @@ def load_dim_date(engine):
     })
     
     date_data.to_sql('dim_date', engine, if_exists='replace', index=False)
-    logger.info(f"Loaded {len(date_data)} dates")
+    logger.info(f"✅ Loaded {len(date_data)} dates")
 
 def load_dimensions(engine, transformed_data):
-    """Load dimension tables"""
+    """Load dimension tables with cleaned product names"""
     logger.info("Loading dimension tables")
     
-    # Drop tables with CASCADE to handle dependencies
+    # Clean product names before loading
+    products = transformed_data['products'].copy()
+    products = clean_product_names_for_db(products)
+    
+    # Drop existing tables first
     with engine.connect() as conn:
         conn.execute(text("DROP TABLE IF EXISTS dim_customer CASCADE"))
         conn.execute(text("DROP TABLE IF EXISTS dim_product CASCADE"))
         conn.commit()
     
+    # Load customers - using 'replace' to avoid duplicates
     customers = transformed_data['customers']
-    customers.to_sql('dim_customer', engine, if_exists='append', index=False)
-    logger.info(f"Loaded {len(customers)} customers")
+    customers.to_sql('dim_customer', engine, if_exists='replace', index=False)
+    logger.info(f"✅ Loaded {len(customers)} customers")
     
-    products = transformed_data['products']
-    products.to_sql('dim_product', engine, if_exists='append', index=False)
-    logger.info(f"Loaded {len(products)} products")
+    # Load products
+    products.to_sql('dim_product', engine, if_exists='replace', index=False)
+    logger.info(f"✅ Loaded {len(products)} products")
+    
+    # Log product names for verification
+    unique_products = products['product_name'].unique().tolist()
+    logger.info(f"📊 Products in database: {unique_products}")
+    
+    return products
 
-def load_fact_table(engine, transformed_data):
+def load_fact_table(engine, transformed_data, products):
     """Load fact table"""
     logger.info("Loading fact orders")
     
     orders = transformed_data['orders']
     customers = transformed_data['customers']
-    products = transformed_data['products']
     
+    # Use the cleaned products - include sales_price
     fact_orders = orders.merge(
         customers[['customer_id']], 
         on='customer_id', 
         how='inner'
     ).merge(
-        products[['product_id']], 
+        products[['product_id', 'sales_price']],
         on='product_id', 
         how='inner'
     )
     
-    if 'total_amount' not in fact_orders.columns:
-        fact_orders['total_amount'] = fact_orders['quantity'] * 1.0
+    # Calculate total_amount from quantity * sales_price
+    fact_orders['total_amount'] = fact_orders['quantity'] * fact_orders['sales_price']
     
     fact_cols = ['order_id', 'customer_id', 'product_id', 'order_date', 
-                 'quantity', 'order_rating', 'total_amount', 'order_year',
+                 'quantity', 'order_rating', 'total_amount', 'order_year', 
                  'order_month', 'order_quarter', 'order_day_of_week']
     
     fact_orders = fact_orders[fact_cols]
-    
     fact_orders.to_sql('fact_orders', engine, if_exists='replace', index=False)
-    logger.info(f"Loaded {len(fact_orders)} orders")
+    
+    logger.info(f"✅ Loaded {len(fact_orders)} orders")
+    logger.info(f"💰 Total Revenue: R{fact_orders['total_amount'].sum():,.2f}")
 
 def run_full_load(transformed_data):
     """Run full load process"""
     logger.info("Starting full load process")
     
     engine = create_db_connection()
-    
     create_star_schema(engine)
     load_dim_date(engine)
-    load_dimensions(engine, transformed_data)
-    load_fact_table(engine, transformed_data)
+    products = load_dimensions(engine, transformed_data)
+    load_fact_table(engine, transformed_data, products)
     
-    logger.info("Load complete")
+    logger.info("✅ Load complete")
     return engine
 
 if __name__ == "__main__":
@@ -185,4 +263,19 @@ if __name__ == "__main__":
     }
     
     engine = run_full_load(transformed_data)
-    print("Database load complete!")
+    print("✅ Database load complete!")
+    
+    # Verify the data
+    with engine.connect() as conn:
+        result = pd.read_sql("""
+            SELECT 
+                product_name,
+                COUNT(*) as product_count,
+                SUM(quantity) as total_quantity,
+                ROUND(AVG(sales_price), 2) as avg_price
+            FROM dim_product
+            GROUP BY product_name
+            ORDER BY product_name
+        """, conn)
+        print("\n📊 Products in database:")
+        print(result.to_string(index=False))
