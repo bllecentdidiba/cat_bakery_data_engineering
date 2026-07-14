@@ -2,6 +2,7 @@ paths:
   raw_data: "data/raw/"
   processed_data: "data/processed/"
   logs: "logs/"
+  reports: "reports/daily_reports/"
 
 database:
   host: "localhost"
@@ -9,7 +10,7 @@ database:
   database: "cat_bakery"
   user: "postgres"
   password: "postgres123"
-  
+
   # Email is handled via environment variables
 
 cleaning:
@@ -28,3 +29,4 @@ cleaning:
 logging:
   level: "INFO"
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
