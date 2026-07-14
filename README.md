@@ -61,9 +61,9 @@ This project is a complete data engineering platform built for a bakery business
 | **Total Orders Processed** | 110,000 |
 | **Orders After Cleaning** | 109,981 |
 | **Data Quality** | 99.98% |
-| **Total Customers** | 58,955 |
-| **Total Revenue** | $626,474 |
-| **Average Order Value** | $5.50 |
+| **Total Customers** | 8,967 |
+| **Total Revenue** | R3,278,320.49 |
+| **Average Order Value** | R332.93 |
 
 ---
 
