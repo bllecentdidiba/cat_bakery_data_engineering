@@ -85,46 +85,40 @@ This project is a complete data engineering platform built for a bakery business
 ### Prerequisites
 - Python 3.10+
 - PostgreSQL 15+
-- Windows
 
 ### Local Setup
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/bllecentdidiba/cat_bakery_data_engineering.git
-   ```
-
-2. **Set up a virtual environment**
+   cd cat_bakery_data_engineering
+   
+2. **Set up vortal environment**
    ```bash
    python -m venv venv
-   ```
+   source venv\Scripts\activate
 
-3. **Install dependencies**
+4. **Install dependencies**
    ```bash
    pip install -r requirements.txt
-   ```
 
-4. **Run the ETL pipeline**
+5. **Configure the database**
+
+   Edit config/config.yaml with your PostgreSQL credentials
+
+   Default: postgres / postgres123 on localhost:5432
+
+5. **Run the ETL pipeline**
    ```bash
    py scripts/run_pipeline.py
-   ```
-
-5. **Launch the dashboard**
+6. **Launch dashboard**
    ```bash
    py -m streamlit run scripts/05_dashboard.py
-   ```
-### Visualizations
-
-## 📊Visual 1: Executive Dashboard
-
-<img width="1291" height="503" alt="Executive_Dashboard" src="https://github.com/user-attachments/assets/d0f3ca82-abd4-4ee4-b556-bce1bc8b5218" />
-
-## 📊Visual 2: Customer tier analysis
-
-<img width="636" height="310" alt="Customer_tier_ananalysis" src="https://github.com/user-attachments/assets/dad95429-72e2-4721-aa96-f9e970253e60" />
+   
+7. **Docker Setup**
+   ```bash
+   docker-compose up -d
 
 
-
-
-
+   
 
