@@ -157,5 +157,6 @@ Trend Analysis: Monthly revenue trends (last 6 months)
 
 Customer Insights: Tier analysis with revenue breakdown
 
-👨‍🎓 About the Author
-BCom Statistics and Data Science student at the University of Pretoria.
+## 👨‍🎓 About the Author
+
+Final-year BCom Statistics and Data Science student at the University of Pretoria.
