@@ -5,7 +5,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **End-to-end ETL pipeline processing 110,000+ bakery transactions — from messy CSV files to an interactive dashboard.**
+> **End-to-end ETL pipeline processing 110 000+ bakery transactions from messy CSV files to an interactive dashboard.**
 
 ---
 
@@ -58,11 +58,11 @@ This project is a complete data engineering platform built for a bakery business
 
 | Metric | Value |
 |--------|-------|
-| **Total Orders Processed** | 110,000 |
-| **Orders After Cleaning** | 109,981 |
+| **Total Orders Processed** | 110 000 |
+| **Orders After Cleaning** | 109 981 |
 | **Data Quality** | 99.98% |
-| **Total Customers** | 8,967 |
-| **Total Revenue** | R3,278,320.49 |
+| **Total Customers** | 8 967 |
+| **Total Revenue** | R3 278 320.49 |
 | **Average Order Value** | R332.93 |
 
 ---
@@ -70,7 +70,7 @@ This project is a complete data engineering platform built for a bakery business
 ## Key Features
 
 - ✅ **ETL Pipeline** — Automated extract, transform, load process
-- ✅ **Data Cleaning** — Handles 3+ date formats, imputes missing values (10,000+)
+- ✅ **Data Cleaning** — Handles 3+ date formats, imputes missing values (10 000+)
 - ✅ **Star Schema** — Optimized for analytical queries
 - ✅ **Interactive Dashboard** — Streamlit + Plotly visualizations
 - ✅ **Docker Containerization** — Portable and reproducible
