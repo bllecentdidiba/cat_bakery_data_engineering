@@ -143,8 +143,6 @@ This project is a complete data engineering platform built for a bakery business
 ## Main Dashboard 📊 ##
 <img width="1258" height="555" alt="image" src="https://github.com/user-attachments/assets/8b4ba627-c806-457d-ba85-bf30a5b81bc6" />
 
-## Tier Analysis Dashboard ##
-
 <img width="935" height="425" alt="image" src="https://github.com/user-attachments/assets/223e646d-5195-4257-8054-830314e93509" />
 
 ## 📧 Automated Email Reports
