@@ -9,11 +9,12 @@ import re
 def load_config():
     """Load configuration from YAML file"""
     import os
-    # Get the directory where THIS file (utils.py) is located
+
     current_dir = os.path.dirname(os.path.abspath(__file__))
+
     # The config folder is in the same directory as utils.py
     config_path = os.path.join(current_dir, 'config', 'config.yaml')
-    print(f"🔍 Loading config from: {config_path}")
+    print(f"Loading config from: {config_path}")
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
 
@@ -29,7 +30,7 @@ def setup_logging(config):
         format=config['logging']['format'],
         handlers=[
             logging.FileHandler(log_file),
-            logging.StreamHandler()
+             logging.StreamHandler()
         ]
     )
     return logging.getLogger(__name__)
