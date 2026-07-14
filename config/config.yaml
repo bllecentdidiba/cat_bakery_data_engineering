@@ -9,6 +9,8 @@ database:
   database: "cat_bakery"
   user: "postgres"
   password: "postgres123"
+  
+  # Email is handled via environment variables
 
 cleaning:
   date_formats:
