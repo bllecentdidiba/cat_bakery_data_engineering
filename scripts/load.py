@@ -25,7 +25,7 @@ def clean_product_names_for_db(df):
         'Ciabater': 'Ciabatta',
         'Ciabattar': 'Ciabatta',
         
-        # Sourdough variations (typos)
+        # Sourdough variations
         'Sourcedough Loaf': 'Sourdough Loaf',
         'Sourcedogh Loaf': 'Sourdough Loaf',
         'ASourcedough Loaf': 'Sourdough Loaf',
@@ -209,11 +209,41 @@ def load_dimensions(engine, transformed_data):
     return products
 
 def load_fact_table(engine, transformed_data, products):
-    """Load fact table"""
+    """Load fact table with date validation - 2026 ONLY"""
     logger.info("Loading fact orders")
     
     orders = transformed_data['orders']
     customers = transformed_data['customers']
+
+    # Filter for 2026 ONLY
+   
+    logger.info("⏰ Filtering orders for 2026 only...")
+    orders['order_date'] = pd.to_datetime(orders['order_date'])
+    
+    # Filter for 2026
+    orders_2026 = orders[orders['order_date'].dt.year == 2026]
+    logger.info(f"📊 Orders before filter: {len(orders)}")
+    logger.info(f"📊 Orders in 2026 only: {len(orders_2026)}")
+    logger.info(f"🗑️ Removed {len(orders) - len(orders_2026)} orders from other years")
+    
+    orders = orders_2026
+    
+    #alidate and filter out future dates (within 2026)
+
+    logger.info("⏰ Validating order dates...")
+    today = pd.Timestamp.today().normalize()
+    
+    future_orders = orders[orders['order_date'] > today]
+    if len(future_orders) > 0:
+        logger.warning(f"⚠️ Found {len(future_orders)} orders with future dates!")
+        logger.warning(f"📅 Future dates sample: {future_orders['order_date'].unique()[:5].tolist()}")
+        orders = orders[orders['order_date'] <= today]
+        logger.info(f"🗑️ Removed {len(future_orders)} future-dated orders")
+    else:
+        logger.info("✅ All orders have valid dates (none in the future)")
+    
+    logger.info(f"📊 Orders after date validation: {len(orders)} rows")
+  
     
     # Use the cleaned products - include sales_price
     fact_orders = orders.merge(
@@ -237,8 +267,7 @@ def load_fact_table(engine, transformed_data, products):
     fact_orders.to_sql('fact_orders', engine, if_exists='replace', index=False)
     
     logger.info(f"✅ Loaded {len(fact_orders)} orders")
-    logger.info(f"💰 Total Revenue: R{fact_orders['total_amount'].sum():,.2f}")
-
+    logger.info(f"💰 Total Revenue (2026 only): R{fact_orders['total_amount'].sum():,.2f}")
 def run_full_load(transformed_data):
     """Run full load process"""
     logger.info("Starting full load process")
